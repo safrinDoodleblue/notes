@@ -2,10 +2,12 @@ const userService=require('./userService');
 // const jwt=require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const { sendWelcomeEmail } = require('../utils/emailService');
 exports.signUpUser=async (req,res) => {
     try {
         const {username,email,password}=req.body;
         const user=await userService.signUpUser({username,email,password});
+        await sendWelcomeEmail(email,username);
         res.status(201).json({ message: 'User created', user});
     } catch (err) {
         res.status(500).json({ err: 'Internal server error' });

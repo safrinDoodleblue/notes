@@ -6,3 +6,8 @@ module.exports = function ensureAuth(req, res, next) {
   if (req.isAuthenticated()) return next();
   return res.status(401).json({ message: 'Unauthorized' });
 };
+
+//req.isAuthenticated()
+//This method is provided by Passport.js.
+
+// It returns true if the user is logged in, otherwise false.

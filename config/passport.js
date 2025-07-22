@@ -32,7 +32,8 @@ passport.deserializeUser(async (id, done) => {
 });
 
 
-
+// serializeUser()	Stores user ID in session after login
+// deserializeUser()	Loads full user data from DB for each request
 
 
 

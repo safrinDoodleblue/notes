@@ -16,8 +16,8 @@ app.use(express.json());
 app.use(
   session({
     secret: process.env.SESSION_SECRET, 
-    resave: false,
-    saveUninitialized: false,
+    resave: false,//Avoids unnecessary saving if session didn't change
+    saveUninitialized: false,//	Avoids saving empty sessions
     store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
     cookie: { maxAge: 1000 * 60 * 60 }, 
   })
